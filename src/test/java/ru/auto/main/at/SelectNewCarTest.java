@@ -14,7 +14,7 @@ public class SelectNewCarTest extends BaseTest {
                 clickButton("Новые").
                 clickButton("Все марки").
                 clickButton("Skoda").
-                checkModelQuantity("Kodiaq", 133);
+                checkModelQuantity("Kodiaq", 96);
 
 
     }
