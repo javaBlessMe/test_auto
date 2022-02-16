@@ -1,5 +1,7 @@
 package ru.auto.main.at;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
@@ -27,8 +29,17 @@ public class PageElement {
     @FindBy(xpath="//div[text()='Skoda' and @class='IndexMarks__item-name']")
     private WebElement newSkodaLink;
 
-    @FindBy(xpath="//a[text()='Kodiaq']")
-    private WebElement newSkodaKodiakLink;
+    @FindBy(xpath = "//div[text()='Audi']")
+    private WebElement newAudiLink;
+
+    @FindBy(xpath = "//a[text()='A3']/ following-sibling::div")
+    private WebElement newAudiA3linkQuantity;
+
+    @FindBy(xpath = "//div[text()='LADA (ВАЗ)']")
+    private WebElement newLadaLink;
+
+    @FindBy(xpath = "//a[text()='Vesta']/following-sibling::div")
+    private WebElement newLadaWestaQuantity;
 
     @FindBy(xpath = "//a[text()='Kodiaq']/following-sibling::div")
     private WebElement newSkodaKodiakQuantity;
@@ -77,19 +88,28 @@ public class PageElement {
             }
             case ("Skoda") -> actions.click(newSkodaLink).build().perform();
             case ("Все марки") -> actions.click(allNewCarLink).build().perform();
-            //case ("Сохранить") -> actions.click(saveSearchButton).build().perform();
             case ("Мотовездеходы") -> actions.click(atvMenuField).build().perform();
-
-
-          //  default -> throw new NotFoundException();
         }
         return this;
     }
-    public void checkModelQuantity(String carModel, int trueQuantity){
 
-      if(carModel.equals("Kodiaq")&& this.isNewCar){
+    public void checkModelQuantity(String brand, String carModel, int trueQuantity){
+        switch (brand){
+            case("Skoda") -> actions.click(newSkodaLink).build().perform();
+            case("Audi") -> actions.click(newAudiLink).build().perform();
+            case("LADA (ВАЗ)") -> actions.click(newLadaLink).build().perform();
+        }
+
+        if(carModel.equals("Kodiaq")&& this.isNewCar){
           assertThat(newSkodaKodiakQuantity.getText(),equalTo(String.valueOf(trueQuantity)));
-      }
+        }
+
+        if(carModel.equals("A3")&&this.isNewCar){
+            assertThat(newAudiA3linkQuantity.getText(),equalTo(String.valueOf(trueQuantity)));
+        }
+        if(carModel.equals("Vesta")&&this.isNewCar){
+            assertThat(newLadaWestaQuantity.getText(),equalTo(String.valueOf(trueQuantity)));
+        }
 
     }
     public PageElement hoverOn(String elementName){
