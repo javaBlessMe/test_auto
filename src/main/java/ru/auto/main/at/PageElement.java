@@ -1,5 +1,7 @@
 package ru.auto.main.at;
 
+
+import io.qameta.allure.Step;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.Keys;
@@ -93,6 +95,7 @@ public class PageElement {
         return this;
     }
 
+   // @Step("The quantity of {brand} {carModel} is {trueQuantity}")
     public void checkModelQuantity(String brand, String carModel, int trueQuantity){
         switch (brand){
             case("Skoda") -> actions.click(newSkodaLink).build().perform();

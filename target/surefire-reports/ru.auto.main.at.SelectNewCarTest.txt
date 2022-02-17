@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: ru.auto.main.at.SelectNewCarTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 19.595 s <<< FAILURE! - in ru.auto.main.at.SelectNewCarTest
+selectTest{String, String, int}[2]  Time elapsed: 7.474 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: "25"
+     but: was "23"
+	at ru.auto.main.at.SelectNewCarTest.selectTest(SelectNewCarTest.java:19)
+

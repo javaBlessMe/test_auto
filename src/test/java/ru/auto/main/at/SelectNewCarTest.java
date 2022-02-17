@@ -10,12 +10,12 @@ public class SelectNewCarTest extends BaseTest {
     @DisplayName("Проверка количества автомобилей в результатах поиска")
     @ParameterizedTest
     @CsvFileSource(resources = "/new_car_quantity_test.csv",numLinesToSkip = 1)
-    public void selectTest(String brand,String model,int quantity) {
+       public void selectTest(String brand,String model,int quantity) {
 
         new PageElement(driver, actions).
                 clickButton("Новые").
                 clickButton("Все марки").
-                //checkModelQuantity("Audi","A3",79);
+                //checkModelQuantity("Audi","A3",25);
                 checkModelQuantity(brand,model,quantity);
     }
 
