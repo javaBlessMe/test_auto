@@ -9,15 +9,11 @@ import java.time.Duration;
 
 public class MainPageTest extends BaseTest {
 
-
+    //Проверка загрузки главной страницы сайта
     @Test
     void mainPageTest(){
-
-
-
-        new PageElement(driver,actions).
-                checkText("Авто.ру");
-
+        new MainPage(driver).
+        checkText("Заголовок","Авто.ру");
     }
 
 
